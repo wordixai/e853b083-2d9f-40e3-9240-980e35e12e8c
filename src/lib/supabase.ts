@@ -117,3 +117,13 @@ export async function deleteEmergencyContact(contactId: string) {
 
   if (error) throw error;
 }
+
+// 立即发送测试邮件
+export async function sendTestEmail(userId: string) {
+  const response = await supabase.functions.invoke('send-test-email', {
+    body: { userId },
+  });
+
+  if (response.error) throw response.error;
+  return response.data;
+}

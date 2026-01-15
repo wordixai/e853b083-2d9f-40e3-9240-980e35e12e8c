@@ -13,6 +13,7 @@ import {
   addEmergencyContact,
   getEmergencyContacts,
   deleteEmergencyContact,
+  sendTestEmail,
 } from '@/lib/supabase';
 import type { User, CheckinRecord, EmergencyContact } from '@/types';
 
@@ -22,6 +23,7 @@ const Index = () => {
   const [contacts, setContacts] = useState<EmergencyContact[]>([]);
   const [lastCheckin, setLastCheckin] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
 
   // 初始化用户数据
   useEffect(() => {
@@ -101,6 +103,21 @@ const Index = () => {
     }
   }, []);
 
+  const handleSendTestEmail = useCallback(async () => {
+    if (!user) return;
+
+    setIsSendingEmail(true);
+    try {
+      const result = await sendTestEmail(user.id);
+      toast.success(result.message || '邮件发送成功！');
+    } catch (error: any) {
+      console.error('发送邮件失败:', error);
+      toast.error(error.message || '发送失败，请检查 Resend API Key 配置');
+    } finally {
+      setIsSendingEmail(false);
+    }
+  }, [user]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-background flex items-center justify-center">
@@ -149,6 +166,8 @@ const Index = () => {
               contacts={contacts}
               onAddContact={handleAddContact}
               onRemoveContact={handleRemoveContact}
+              onSendTestEmail={handleSendTestEmail}
+              isSendingEmail={isSendingEmail}
             />
           </section>
 

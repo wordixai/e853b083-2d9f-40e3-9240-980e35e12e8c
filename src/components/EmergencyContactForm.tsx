@@ -2,16 +2,18 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { UserPlus, X, Mail, User } from 'lucide-react';
+import { UserPlus, X, Mail, User, Send, Loader2 } from 'lucide-react';
 import type { EmergencyContact } from '@/types';
 
 interface EmergencyContactFormProps {
   contacts: EmergencyContact[];
   onAddContact: (contact: { name: string; email: string }) => void;
   onRemoveContact: (id: string) => void;
+  onSendTestEmail?: () => void;
+  isSendingEmail?: boolean;
 }
 
-export function EmergencyContactForm({ contacts, onAddContact, onRemoveContact }: EmergencyContactFormProps) {
+export function EmergencyContactForm({ contacts, onAddContact, onRemoveContact, onSendTestEmail, isSendingEmail }: EmergencyContactFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isAdding, setIsAdding] = useState(false);
@@ -107,6 +109,28 @@ export function EmergencyContactForm({ contacts, onAddContact, onRemoveContact }
               </Button>
             </div>
           ))}
+
+          {/* 发送测试邮件按钮 */}
+          {contacts.length > 0 && onSendTestEmail && (
+            <Button
+              variant="outline"
+              className="w-full mt-4"
+              onClick={onSendTestEmail}
+              disabled={isSendingEmail}
+            >
+              {isSendingEmail ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  发送中...
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 mr-2" />
+                  立即发送测试邮件
+                </>
+              )}
+            </Button>
+          )}
         </div>
       )}
     </div>
