@@ -24,5 +24,26 @@
   "firstStartTime": "2026-01-15T13:42:35.786Z",
   "sonnet45MigrationComplete": true,
   "opus45MigrationComplete": true,
-  "thinkingMigrationComplete": true
+  "thinkingMigrationComplete": true,
+  "projects": {
+    "/app": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "Index.tsx",
+        "CheckinHistory.tsx",
+        "EmergencyContactForm.tsx",
+        "App.tsx",
+        "index.ts"
+      ],
+      "exampleFilesGeneratedAt": 1768485112238
+    }
+  }
 }
