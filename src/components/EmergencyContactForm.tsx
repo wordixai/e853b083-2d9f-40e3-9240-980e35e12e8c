@@ -126,7 +126,7 @@ export function EmergencyContactForm({ contacts, onAddContact, onRemoveContact, 
               ) : (
                 <>
                   <Send className="w-4 h-4 mr-2" />
-                  立即发送测试邮件
+                  立即发送紧急通知
                 </>
               )}
             </Button>

@@ -69,17 +69,16 @@ serve(async (req) => {
         body: JSON.stringify({
           from: "死了么 <onboarding@resend.dev>",
           to: contact.email,
-          subject: "🔔 测试通知 - 死了么应用",
+          subject: "⚠️ 紧急通知：您关心的人需要您的关注",
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h1 style="color: #f97316;">🔔 测试通知</h1>
+              <h1 style="color: #e74c3c;">⚠️ 紧急通知</h1>
               <p>尊敬的 ${contact.name}：</p>
-              <p>这是一封来自"死了么"应用的<strong>测试邮件</strong>。</p>
-              <p>您已被设置为紧急联系人。如果用户连续 48 小时未签到，您将收到类似的紧急通知。</p>
+              <p>您被设置为某位用户的紧急联系人。该用户主动触发了紧急通知，请您尽快确认其安全状况。</p>
               <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                <p style="margin: 0;"><strong>用户最后签到时间：</strong>${lastCheckinDate}</p>
+                <p style="margin: 0;"><strong>最后签到时间：</strong>${lastCheckinDate}</p>
               </div>
-              <p style="color: #22c55e;">✅ 邮件功能正常工作！</p>
+              <p style="color: #e74c3c;"><strong>请立即联系确认该用户的安全情况！</strong></p>
               <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
               <p style="color: #999; font-size: 12px;">此邮件由"死了么"应用发送，请勿回复。</p>
             </div>
