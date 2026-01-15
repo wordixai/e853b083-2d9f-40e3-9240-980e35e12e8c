@@ -7,7 +7,7 @@ import type { EmergencyContact } from '@/types';
 
 interface EmergencyContactFormProps {
   contacts: EmergencyContact[];
-  onAddContact: (contact: Omit<EmergencyContact, 'id'>) => void;
+  onAddContact: (contact: { name: string; email: string }) => void;
   onRemoveContact: (id: string) => void;
 }
 

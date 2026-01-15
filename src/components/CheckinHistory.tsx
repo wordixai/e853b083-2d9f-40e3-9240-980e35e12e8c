@@ -6,7 +6,7 @@ interface CheckinHistoryProps {
 }
 
 export function CheckinHistory({ checkins }: CheckinHistoryProps) {
-  const recentCheckins = checkins.slice(-7).reverse();
+  const recentCheckins = checkins.slice(0, 7);
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
@@ -17,8 +17,8 @@ export function CheckinHistory({ checkins }: CheckinHistoryProps) {
     });
   };
 
-  const formatTime = (timestamp: number) => {
-    return new Date(timestamp).toLocaleTimeString('zh-CN', {
+  const formatTime = (checkedAt: string) => {
+    return new Date(checkedAt).toLocaleTimeString('zh-CN', {
       hour: '2-digit',
       minute: '2-digit',
     });
@@ -47,7 +47,7 @@ export function CheckinHistory({ checkins }: CheckinHistoryProps) {
                 <CheckCircle className="w-5 h-5 text-accent" />
                 <span className="text-foreground">{formatDate(record.date)}</span>
               </div>
-              <span className="text-sm text-muted-foreground">{formatTime(record.timestamp)}</span>
+              <span className="text-sm text-muted-foreground">{formatTime(record.checked_at)}</span>
             </div>
           ))}
         </div>

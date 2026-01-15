@@ -17,7 +17,8 @@
     "persimmon_marble_flag": "N/A",
     "tengu_tool_pear": false,
     "tengu_thinkback": false,
-    "tengu_tool_search_unsupported_models": null
+    "tengu_tool_search_unsupported_models": null,
+    "tengu_ant_attribution_header_new": true
   },
   "userID": "ec735e7c98943bcf38d321b3169b2d0ed0fa608000aaaa1e6b2001da3693ac46",
   "firstStartTime": "2026-01-15T13:42:35.786Z",
